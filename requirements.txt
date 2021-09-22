@@ -1,0 +1,5 @@
+streamlit==0.79.0
+numpy==1.19.5
+pandas==1.3.1
+kerars==2.6.0
+sqtdm==0.0.4
