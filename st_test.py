@@ -84,7 +84,7 @@ def choose_type_input():
             input = st.file_uploader('Pls upload zip file',type='zip')
         #else : 
         #    input = get_dirname()
-    return input_type, input, True
+    return input_type, input
 
 def get_results(model,x,label):
     results = model.predict(x)
@@ -157,7 +157,8 @@ def main():
     # Load model
     model = load_model('MbN_AEN_N_aug')
     # select input type
-    input_type, input, done_select = choose_type_input()
+    input_type, input = choose_type_input()
+    done_select = st.button('RUN APPLICATION!!')
     if done_select :
         x_test, name_test, predict_aug, done_process = main_computational(input_type, input, model)
         if done_process:
