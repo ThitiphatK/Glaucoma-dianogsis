@@ -2,7 +2,7 @@
 import streamlit as st
 #import tkinter as tk
 #from tkinter import filedialog
-from cv2 import cv2
+import cv2
 import numpy as np
 import pandas as pd
 import keras
