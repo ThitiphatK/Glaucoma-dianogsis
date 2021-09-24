@@ -79,7 +79,7 @@ def choose_type_input():
     input_type = st.selectbox('Select',['image','zip'])
     if input_type:
         if input_type=='image':
-            input = st.file_uploader('Pls upload image file',type='png')
+            input = st.file_uploader('Pls upload image file',type=['png','jpeg'])
         elif input_type=='zip':
             input = st.file_uploader('Pls upload zip file',type='zip')
         #else : 
