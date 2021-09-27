@@ -10,9 +10,6 @@ from zipfile import ZipFile
 from PIL import Image
 from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score, matthews_corrcoef
 
-physical_devices = tf.config.list_physical_devices("GPU")
-tf.config.experimental.set_memory_growth(physical_devices[0], True)
-
 # -------------------------------- Setup --------------------------------
 
 # Set up hyperparameters.
