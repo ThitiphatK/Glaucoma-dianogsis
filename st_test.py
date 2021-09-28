@@ -45,7 +45,7 @@ def strict_part():
     )
     st.sidebar.markdown('[Image credit](https://www.reviewofoptometry.com/CMSImagesContent/2011/11/030_RO1111_F1.gif)')
     
-    with st.sidebar.expander('Contact'):
+    with st.sidebar.beta_expander('Contact'):
         st.write("I'd love your feedback :smiley:")
     
 # ----------------- Defined function -----------------
