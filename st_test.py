@@ -125,7 +125,7 @@ def get_results(model,x,label):
     probability = []
     for i in range(len(results)):
         predict.append(label[np.argmax(results[i])])
-        probability.append(max(results[i]))
+        probability.append(max(results[i]*100))
     return predict, probability
 
 def show_data(x_test, pics_name, prediction):
@@ -159,7 +159,7 @@ def main_computational(input_type, input, model):
     x_test /= 255
     
     predicted, probability = get_results(model,x_test,label)
-    dict = {'pics_name': name_test, 'prediction': predicted, 'probability(%)': probability*100}
+    dict = {'pics_name': name_test, 'prediction': predicted, 'probability(%)': probability}
     df = pd.DataFrame(dict)
     st.title('Results')
     st.dataframe(df)
