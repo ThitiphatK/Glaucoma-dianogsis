@@ -159,7 +159,7 @@ def main_computational(input_type, input, model):
     x_test /= 255
     
     predicted, probability = get_results(model,x_test,label)
-    dict = {'pics_name': name_test, 'prediction': predicted, 'probability': probability}
+    dict = {'pics_name': name_test, 'prediction': predicted, 'probability(%)': probability*100}
     df = pd.DataFrame(dict)
     st.title('Results')
     st.dataframe(df)
