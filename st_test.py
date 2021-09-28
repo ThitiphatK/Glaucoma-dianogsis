@@ -12,6 +12,13 @@ from stqdm import stqdm
 from zipfile import ZipFile
 from PIL import Image
 
+# ----------------- Streamlit page setting -----------------
+st.set_page_config(page_title="SYNTHIA", 
+                page_icon=":robot_face:",
+                layout="wide",
+                initial_sidebar_state="expanded"
+                )
+
 #defined setting
 WIDTH = 128
 model_path = r'model'
