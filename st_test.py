@@ -13,8 +13,8 @@ from zipfile import ZipFile
 from PIL import Image
 
 # ----------------- Streamlit page setting -----------------
-st.set_page_config(page_title="SYNTHIA", 
-                page_icon=":robot_face:",
+st.set_page_config(page_title="GLAUCOMA DIAGNOSSIS", 
+                page_icon=":eye-in-speech-bubble:",
                 layout="wide",
                 initial_sidebar_state="expanded"
                 )
