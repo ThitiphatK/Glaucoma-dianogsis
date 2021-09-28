@@ -128,13 +128,14 @@ def get_results(model,x,label):
         probability.append(max(results[i]*100))
     return predict, probability
 
-def show_data(x_test, pics_name, prediction):
+def show_data(x_test, pics_name, prediction, probability):
     name_pic = st.selectbox('select pics_name', pics_name)
     #name_pic = pics_name[0]
     if name_pic:
         position_pic = pics_name.index(name_pic)
         st.image(cv2.cvtColor(x_test[position_pic], cv2.COLOR_BGR2RGB),width=400)
-        st.write('Prediction of selected picture is : ',prediction[position_pic])
+        st.write('Prediction of selected picture is : ', prediction[position_pic])
+        st.write('Probability of selected picture is : ', probability[position_pic])
 
 
 def check(x_test, pics_name, prediction):
@@ -180,7 +181,7 @@ def main():
         x_test, name_test, predict_aug, probability, done_process = main_computational(input_type, input, model)
         if done_process:
             #check(x_test, name_test, predict_aug)
-            show_data(x_test, name_test, predict_aug)
+            show_data(x_test, name_test, predict_aug, probability)
 
 if __name__ == '__main__':
 	main()
