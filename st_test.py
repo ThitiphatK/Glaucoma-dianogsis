@@ -14,7 +14,7 @@ from PIL import Image
 
 # ----------------- Streamlit page setting -----------------
 st.set_page_config(page_title="GLAUCOMA DIAGNOSSIS", 
-                page_icon=":eye-in-speech-bubble:",
+                page_icon="eye-in-speech-bubble",
                 layout="wide",
                 initial_sidebar_state="expanded"
                 )
