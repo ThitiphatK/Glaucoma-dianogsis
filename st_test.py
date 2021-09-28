@@ -122,9 +122,11 @@ def choose_type_input():
 def get_results(model,x,label):
     results = model.predict(x)
     predict = []
+    probability = []
     for i in range(len(results)):
         predict.append(label[np.argmax(results[i])])
-    return predict
+        probability.append(max(results[i]))
+    return predict, probability
 
 def show_data(x_test, pics_name, prediction):
     name_pic = st.selectbox('select pics_name', pics_name)
@@ -156,13 +158,13 @@ def main_computational(input_type, input, model):
     x_test = x_test.astype('float32')
     x_test /= 255
     
-    predicted = get_results(model,x_test,label)
-    dict = {'pics_name': name_test, 'prediction': predicted} 
+    predicted, probability = get_results(model,x_test,label)
+    dict = {'pics_name': name_test, 'prediction': predicted, 'probability': probability}
     df = pd.DataFrame(dict)
     st.title('Results')
     st.dataframe(df)
     st.write("Total run time : --- %s seconds ---" % (time.time() - start_time))
-    return x_test, name_test, predicted, True
+    return x_test, name_test, predicted, probability, True
 
 # ----------------- Program part -----------------
 
@@ -175,7 +177,7 @@ def main():
     input_type, input = choose_type_input()
     done_select = st.button('RUN APPLICATION!!')
     if done_select :
-        x_test, name_test, predict_aug, done_process = main_computational(input_type, input, model)
+        x_test, name_test, predict_aug, probability, done_process = main_computational(input_type, input, model)
         if done_process:
             #check(x_test, name_test, predict_aug)
             show_data(x_test, name_test, predict_aug)
