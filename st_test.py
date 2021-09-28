@@ -24,6 +24,32 @@ WIDTH = 128
 model_path = r'model'
 label = ['AdvancedGlaucoma','EarlyGlaucoma','Normal']
 
+#@st.cache(suppress_st_warning=True)
+def strict_part():
+    # Details of Application
+    st.title('Glaucoma diagnosis Application')
+    
+    st.markdown("""
+    This app provides an image classification model for glaucoma diagnosis that was trained using **MobileNetV2** 
+    and a dataset of fundus images from **Harvard Dataverse**. [ Note that! the dataset name is Machine learn for glaucoma, 
+    and it was provided by Kim, Ungsoo ].
+    * **Python libraries:** streamlit, tkinter, cv2, numpy, pandas, keras, os, stqdm
+    * **Data source:** [Harvard Dataverse](https://doi.org/10.7910/DVN/1YRRAC).
+    """)
+    
+    #example image
+    st.sidebar.title('Example image')
+    st.sidebar.image(
+        'https://www.reviewofoptometry.com/CMSImagesContent/2011/11/030_RO1111_F1.gif',
+        width=200,
+    )
+    st.sidebar.markdown('[Image credit](https://www.reviewofoptometry.com/CMSImagesContent/2011/11/030_RO1111_F1.gif)')
+    
+    expander = st.sidebar.expander('Contact')
+    expander.write("I'd love your feedback :smiley:")
+    
+# ----------------- Defined function -----------------
+
 def load_model(model_name):
     model = keras.models.load_model(os.path.join(model_path , model_name))
     return model
@@ -116,30 +142,6 @@ def check(x_test, pics_name, prediction):
         show_data(x_test, pics_name, prediction)
 
 #@st.cache(suppress_st_warning=True)
-def strict_part():
-    # Details of Application
-    st.title('Glaucoma diagnosis Application')
-    
-    st.markdown("""
-    This app provides an image classification model for glaucoma diagnosis that was trained using **MobileNetV2** 
-    and a dataset of fundus images from **Harvard Dataverse**. [ Note that! the dataset name is Machine learn for glaucoma, 
-    and it was provided by Kim, Ungsoo ].
-    * **Python libraries:** streamlit, tkinter, cv2, numpy, pandas, keras, os, stqdm
-    * **Data source:** [Harvard Dataverse](https://doi.org/10.7910/DVN/1YRRAC).
-    """)
-    
-    #example image
-    st.sidebar.title('Example image')
-    st.sidebar.image(
-        'https://www.reviewofoptometry.com/CMSImagesContent/2011/11/030_RO1111_F1.gif',
-        width=200,
-    )
-    st.sidebar.markdown('[Image credit](https://www.reviewofoptometry.com/CMSImagesContent/2011/11/030_RO1111_F1.gif)')
-    
-    expander = st.sidebar.expander('Contact')
-    expander.write("I'd love your feedback :smiley")
-
-#@st.cache(suppress_st_warning=True)
 def main_computational(input_type, input, model):
     start_time = time.time()
     
@@ -161,6 +163,8 @@ def main_computational(input_type, input, model):
     st.dataframe(df)
     st.write("Total run time : --- %s seconds ---" % (time.time() - start_time))
     return x_test, name_test, predicted, True
+
+# ----------------- Program part -----------------
 
 def main():
     strict_part()
