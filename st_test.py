@@ -134,7 +134,10 @@ def strict_part():
         'https://www.reviewofoptometry.com/CMSImagesContent/2011/11/030_RO1111_F1.gif',
         width=200,
     )
-    st.sidebar.text('[Image credit](https://www.reviewofoptometry.com/CMSImagesContent/2011/11/030_RO1111_F1.gif)')
+    st.sidebar.markdown('[Image credit](https://www.reviewofoptometry.com/CMSImagesContent/2011/11/030_RO1111_F1.gif)')
+    
+    expander = st.sidebar.expander('Contact')
+    expander.write("I'd love your feedback :smiley")
 
 #@st.cache(suppress_st_warning=True)
 def main_computational(input_type, input, model):
