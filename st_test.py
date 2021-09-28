@@ -27,7 +27,7 @@ label = ['AdvancedGlaucoma','EarlyGlaucoma','Normal']
 #@st.cache(suppress_st_warning=True)
 def strict_part():
     # Details of Application
-    st.title('Glaucoma diagnosis Application')
+    st.title(':eye: Glaucoma diagnosis Application')
     
     st.markdown("""
     This app provides an image classification model for glaucoma diagnosis that was trained using **MobileNetV2** 
